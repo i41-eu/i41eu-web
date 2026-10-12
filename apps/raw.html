@@ -1,0 +1,95 @@
+{{define "description"}}Raw data: every sensor and command of a Stackchan robot in any browser, with end to end encryption. On raw.q41.eu.{{end}}
+{{define "main"}}
+  <p class="sub">Every sensor and command of the robot, in any browser, with no app to install.
+  For tinkerers, and for trying what the robot can do.</p>
+  <div class="actions">
+    <a class="btn main" href="https://raw.q41.eu">Open raw.q41.eu</a>
+    <a class="btn" href="https://s.i41.eu/s3d/#raw">See it on the 3D robot</a>
+    <a class="btn" href="https://m.i41.eu">Set up a robot</a>
+  </div>
+
+  <div class="hero">
+    <figure><img src="/s/robot3d-raw.png" width="400" height="400" alt="The robot running Raw data: its own readings on its screen (motion, light, servos, power, the last touch)"></figure>
+    <figure><a class="shot" href="/s/raw-page.webp"><img src="/s/raw-page.webp" width="405" height="540"
+      alt="Raw data: buttons for the robot's face, what it says and its LEDs"></a>
+      <figcaption>The dashboard</figcaption></figure>
+  </div>
+
+  <div class="cards">
+    <section class="card">
+      <h2>The dashboard</h2>
+      <ul>
+        <li><b>See and hear:</b> live video from its camera, a snapshot, the robot's microphone.</li>
+        <li><b>Talk through it:</b> your phone's microphone or a sound file on its speaker, its mouth moving.</li>
+        <li><b>Move it:</b> nod, shake, sliders for the head's yaw and pitch, hold a position.</li>
+        <li><b>Its face and lights:</b> six emotions, speech bubbles, stickers, emoji or a picture
+        from your phone; all 12 LEDs, one by one or with effects.</li>
+        <li><b>Infrared and NFC:</b> catch a TV remote's code and send it again; read tags and cards.</li>
+        <li><b>Every sensor:</b> motion and compass live at 100 Hz (CSV download), touch, head touch,
+        light, proximity, the batteries, the servos' load and temperature, Wi-Fi and memory.</li>
+        <li><b>Latency:</b> a ping split into browser to server, server to robot and the robot's loop.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Privacy</h2>
+      <p>With end to end encryption on, only paired browsers can read the robot: the server
+      relays ciphertext. A robot set up on m.i41.eu has it on for Raw data.</p>
+      <p>The camera and microphone stream only while someone watches or listens, and the robot shows
+      a red LIVE badge meanwhile. On the robot itself you can turn its camera and microphone off,
+      or off at night: the firmware then refuses them to any app, and no app can turn them back on.
+      Continuous rotation asks on the robot's own screen first.</p>
+      <p><a class="more" href="https://github.com/i41-eu/i41eu-arch/blob/main/docs/e2ee.md" target="_blank" rel="noopener" data-ext="GitHub">How the encryption works</a></p>
+    </section>
+
+    <section class="card">
+      <h2>Parts it uses</h2>
+      <p>Every part Raw data uses and what it does with it. Pick a part to see where it sits on
+      the 3D robot.</p>
+      <ul class="parts">
+        <li><a href="https://s.i41.eu/s3d/?pick=display#raw">Display</a> Faces (six emotions), speech bubbles, stickers, emoji and pictures from the phone; brightness.</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=touch-screen#raw">Touch screen</a> Live touch: both fingers drawn at 50 Hz; taps with coordinates in Events.</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=camera#raw">Camera</a> Live video (JPEG, about 5 fps), a 640×480 snapshot, mirror and flip, raw sensor registers.</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=microphones#raw">Microphones</a> The robot's microphone, played in the browser.</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=speaker#raw">Speaker</a> Talk from the phone, play a sound file, beep.</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=yaw-servo#raw">Head yaw servo</a> Nod, shake, home, a yaw slider; continuous rotation after a Yes on the robot.</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=pitch-servo#raw">Head pitch servo</a> A pitch slider (5–85°), nod, home, hold position.</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=yaw-servo-feedback#raw">Servo feedback</a> Load and temperature, supply voltage, the reported angle of each servo.</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=rgb-leds#raw">RGB LEDs</a> One colour for all, random, effects (rainbow, breathe, chase, blink), a picker per LED.</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=imu#raw">Accelerometer and gyroscope</a> Shake in Events; a live 100 Hz IMU with a CSV download; acceleration and rotation in Sensors.</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=magnetometer#raw">Magnetometer (compass)</a> The magnetic field per axis (µT and raw counts), live with the IMU.</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=light#raw">Ambient light</a> Room light (lux) in Sensors.</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=proximity#raw">Proximity</a> Proximity in Sensors.</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=si12t#raw">Head touch</a> Head touch in Events: press with the zones, release with its duration, swipes.</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=nfc#raw">NFC reader</a> Reader on/off; a tag near the robot adds its UID, type and NDEF record to Events.</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=ir-receiver#raw">IR receiver</a> A TV remote's code shows up, to send again or save.</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=ir-transmitter#raw">IR transmitter</a> Send NEC or raw codes, hold, send 3×, test the LED, self-test.</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=power-led#raw">Power/charge LED</a> On, blink, fast, off, or charging.</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=battery#raw">Battery</a> Battery, charging, the CoreS3 power chip's voltages and state.</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=battery-monitor#raw">Battery monitor (body)</a> The body battery's voltage, current and power (INA226).</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=esp32s3#raw">Processor</a> Chip temperature, Wi-Fi, free memory, uptime; ping split into its legs.</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=servo-power#raw">Servo power</a> Servo power on and off (head extras).</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=power-button#raw">Power button</a> A press shows in Events (short or long).</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=usb#raw">USB ports</a> USB plugged and unplugged show in Events; USB voltage under Sensors.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Start</h2>
+      <ol>
+        <li>Set your robot up on <a href="https://m.i41.eu">m.i41.eu</a> with Raw data among its apps
+        (one click over USB in Chrome or Edge).</li>
+        <li>On the robot, swipe up for the app switcher and pick Raw data, or switch it from the manager's page.</li>
+        <li>Scan the robot's QR code with your phone to pair. A paired phone can let a laptop in too.</li>
+      </ol>
+    </section>
+
+    <section class="card">
+      <h2>Source</h2>
+      <p><a href="https://github.com/i41-eu/q41eu-raw" target="_blank" rel="noopener" data-ext="GitHub">q41eu-raw</a>:
+      one Go server with the page built in, also for your own server at home. It holds the robot's
+      wire protocol, which the other apps use too. <span class="lic">MIT</span></p>
+      <p class="note">A proof of concept, vibe coded and tested on a real robot at home, not reviewed by humans yet.</p>
+    </section>
+  </div>
+{{end}}

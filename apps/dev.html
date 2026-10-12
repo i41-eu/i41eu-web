@@ -1,0 +1,112 @@
+{{define "description"}}Dev: your Stackchan robot for your own programs and AI agents (HTTP and MCP), and a Go kit for robot apps. On dev.q41.eu.{{end}}
+{{define "main"}}
+  <p class="sub">Your robot for your own programs and AI agents, and a Go kit for writing new
+  robot apps. Online at dev.q41.eu, or on a computer at home.</p>
+  <div class="actions">
+    <a class="btn main" href="https://dev.q41.eu">Open dev.q41.eu</a>
+    <a class="btn" href="https://m.i41.eu">Set up a robot</a>
+    <a class="btn" href="https://github.com/i41-eu/q41eu-dev#readme" target="_blank" rel="noopener">Run it at home (GitHub)</a>
+  </div>
+
+  <div class="hero">
+    <div>
+      <ul class="what">
+        <li><b>A script in any language</b> shows text on the robot, nods, lights the LEDs as a
+        progress bar, plays a chime: one <code>curl</code> each, no robot protocol to learn.</li>
+        <li><b>An AI agent</b> (Claude Code or any MCP client) shows short text, speaks in a bubble,
+        asks you "Deploy now? Yes / Not yet" and gets the button you tapped, and hears when you pat
+        the robot's head or hold a tag near it.</li>
+        <li><b>App authors</b> (Pet, Focus, the next one) use the same building blocks in Go, so a
+        new robot app is a few hundred lines instead of a few thousand.</li>
+      </ul>
+    </div>
+    <figure><a class="shot" href="/s/dev-page.webp"><img src="/s/dev-page.webp" width="600" height="1100"
+      alt="Dev's page: a robot online, Try it with buttons to show text, set the face, move the head, light the LEDs, play a chime and ask a question; keys and events"></a>
+      <figcaption>Dev's page: try every action, make keys, watch events</figcaption></figure>
+  </div>
+
+  <div class="cards">
+    <section class="card">
+      <h2>Your first program</h2>
+      <p>Dev's page gives each new key with three lines for your shell:</p>
+      <pre><code>export SDEV_URL=https://dev.q41.eu        # where Dev runs
+export SDEV_ROBOT=stackchan-0a1b2c3d4e50      # your robot
+export SDEV_KEY=sdev_…                        # the key: keep it like a password</code></pre>
+      <p>Then a script shows a green card on the robot:</p>
+      <pre><code>curl -X POST "$SDEV_URL/v1/robots/$SDEV_ROBOT/show" \
+  -H "Authorization: Bearer $SDEV_KEY" \
+  -d '{"title":"Build","text":"All tests pass","color":"green","progress":1}'</code></pre>
+      <p>and Claude Code gets a body on your desk:</p>
+      <pre><code>claude mcp add --transport http stackchan "$SDEV_URL/mcp" \
+  --header "Authorization: Bearer $SDEV_KEY"</code></pre>
+      <p><b>Examples</b> in curl, Python (the standard library only) and Go: <i>hello</i> (a card,
+      green LEDs, a nod, a chime), <i>ask</i> (a question, the answer tapped), <i>build status</i>
+      (blue while your tests run, then green and a chime, or red and a shake) and <i>events</i>
+      (what people do at the robot). Each also has a <b>Run</b> button on Dev's page, so you can
+      try it there first.</p>
+      <p>The whole API is an OpenAPI 3.1 document at <code>$SDEV_URL/v1/openapi.json</code>, for
+      any OpenAPI tool or client generator.</p>
+      <p><a class="more" href="https://github.com/i41-eu/q41eu-dev/blob/main/docs/getting-started.md" target="_blank" rel="noopener" data-ext="GitHub">The getting started guide</a>
+      · <a href="https://github.com/i41-eu/q41eu-dev/tree/main/examples" target="_blank" rel="noopener" data-ext="GitHub">the examples</a></p>
+    </section>
+
+    <section class="card">
+      <h2>The actions</h2>
+      <p>Every action is <code>POST /v1/robots/&lt;robot&gt;/&lt;action&gt;</code> with a JSON
+      object, and the same action is the MCP tool <code>robot_&lt;action&gt;</code>.</p>
+      <ul>
+        <li><b>show</b> a card with text that sizes itself, a progress bar, or a picture;
+        <b>say</b> a speech bubble; <b>face</b> an emotion, or the robot's own readings.</li>
+        <li><b>move</b> the head (nod, shake, or yaw and pitch); <b>leds</b> a colour, a bar or an
+        effect; <b>sound</b> a chime or a few notes.</li>
+        <li><b>ask</b> a question with 2 to 4 buttons and get the answer tapped.</li>
+        <li><b>events</b>: what a person did: a tap, a pat or a stroke on the head, shaken, picked
+        up, someone near, a tag, a TV remote's button.</li>
+        <li><b>state</b> (online, its readings), and <b>command</b> for any of the robot's own
+        commands, except switching its apps, restarting it, or turning streams on.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Keys</h2>
+      <p>A key belongs to one robot, and only a browser paired with that robot (by its QR code)
+      makes one. Dev keeps only a hash of it, lists your keys with when each was last used, and
+      deletes them. For a robot set up by a manager, its keys show on the manager's page next to
+      its paired browsers, and can be removed there too.</p>
+    </section>
+
+    <section class="card">
+      <h2>For app authors: the Go kit</h2>
+      <ul>
+        <li><b>robothub</b>: the robot side of an app: tokens, one connection per robot, pairing codes.</li>
+        <li><b>robot</b>: cards, the face, the head, the LEDs, sounds on a connected robot.</li>
+        <li><b>screen</b>, <b>sound</b>, <b>leds</b>: 320×240 cards and questions, chimes and
+        melodies, the LEDs in the robot's order.</li>
+        <li><b>gesture</b>: the robot's raw events as what a person did.</li>
+      </ul>
+      <p><a class="more" href="https://pkg.go.dev/github.com/i41-eu/q41eu-dev" target="_blank" rel="noopener" data-ext="pkg.go.dev">The packages</a></p>
+    </section>
+
+    <section class="card">
+      <h2>Start</h2>
+      <ol>
+        <li>Give your robot Dev as one of its apps: on <a href="https://m.i41.eu">m.i41.eu</a>
+        (pick Dev when you set the robot up, or add it on the robot's card), or at home with your
+        own Dev and the home manager.</li>
+        <li>On the robot, swipe up, tap QR, then Next until it shows Dev, and Connect. Scan its QR
+        code with your phone, or open the link under it on your computer.</li>
+        <li><b>New key</b> on Dev's page: it is shown once, with the three <code>SDEV_</code> lines
+        for your shell.</li>
+        <li>Run an example, or give the key to Claude Code. Step by step:
+        <a href="https://github.com/i41-eu/q41eu-dev/blob/main/docs/getting-started.md" target="_blank" rel="noopener" data-ext="GitHub">getting started</a>.</li>
+      </ol>
+    </section>
+
+    <section class="card">
+      <h2>Source</h2>
+      <p><a href="https://github.com/i41-eu/q41eu-dev" target="_blank" rel="noopener" data-ext="GitHub">q41eu-dev</a>:
+      one Go server and the Go kit. <span class="lic">Apache-2.0</span></p>
+      <p class="note">A proof of concept, vibe coded and tested on a real robot at home, not reviewed by humans yet.</p>
+    </section>
+  </div>
+{{end}}

@@ -1,0 +1,72 @@
+{{define "description"}}Focus: a focus timer for your desk on a Stackchan robot. The robot is the timer, a phone optional. On focus.q41.eu.{{end}}
+{{define "main"}}
+  <p class="sub">A focus timer for your desk: the robot is the timer, a phone optional.</p>
+  <div class="actions">
+    <a class="btn main" href="https://focus.q41.eu">Open focus.q41.eu</a>
+    <a class="btn" href="https://s.i41.eu/s3d/#focus">See it on the 3D robot</a>
+    <a class="btn" href="https://m.i41.eu">Set up a robot</a>
+  </div>
+
+  <div class="hero">
+    <figure><img src="/s/robot3d-focus.png" width="400" height="400" alt="The robot running Focus: a red ring, 17:42 left, its LEDs counting down"></figure>
+    <figure><a class="shot" href="/s/focus-page.webp"><img src="/s/focus-page.webp" width="600" height="1090"
+      alt="Focus on a phone: the ring with 17:38 left, the task, today's count and the week"></a>
+      <figcaption>The page on a phone</figcaption></figure>
+  </div>
+
+  <div class="cards">
+    <section class="card">
+      <h2>On the robot</h2>
+      <p>25 minutes of focus, a 5 minute break, and a longer break after every four. No phone is
+      needed: tap the robot's screen or its head to start or pause, hold the screen to skip.</p>
+      <ul>
+        <li><b>The screen:</b> the time left as a ring and as digits, today's count, and a line for
+        the room: "FREE IN 12 MIN" while you focus, "STRETCH" on a break.</li>
+        <li><b>The lights:</b> both LED strips show the time left as a shrinking bar, dim: red while
+        focusing, green or blue on a break, amber when paused. A sign for others in the room.</li>
+        <li><b>At the end of a phase:</b> a chime, and a nod after focus or a look up after a break.
+        Each can be turned off.</li>
+      </ul>
+      <p>A focus period cut short does not count, and nothing punishes it.</p>
+    </section>
+
+    <section class="card">
+      <h2>On the page</h2>
+      <p>Pair a phone or computer with the robot's QR code for the rest: what you focus on, two
+      marks for interruptions without stopping the timer, today's focus periods and minutes, days
+      in a row, the last seven days, and the settings: 25/5, 50/10 or 90/20, a daily goal, when
+      your day starts (for night owls), and the robot's chime, lights and moves.</p>
+    </section>
+
+    <section class="card">
+      <h2>Parts it uses</h2>
+      <p>Every part Focus uses and what it does with it. Pick a part to see where it sits on the
+      3D robot.</p>
+      <ul class="parts">
+        <li><a href="https://s.i41.eu/s3d/?pick=display#focus">Display</a> The phase, the time left as a ring and as digits, today's count, the set's dots, and a line for the room ("FREE IN 12 MIN").</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=touch-screen#focus">Touch screen</a> Tap to start or pause, hold to skip to the next phase.</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=head-press#focus">Head press</a> A touch on the head starts or pauses, as a tap on the screen does.</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=rgb-leds#focus">RGB LEDs</a> The time left as a shrinking bar: red while focusing, green or blue on a break, amber when paused, off when idle.</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=speaker#focus">Speaker</a> A chime at the end of a phase: a rising bell after focus, two calm notes after a break.</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=pitch-servo#focus">Head pitch servo</a> A nod after focus, a look up after a break.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Start</h2>
+      <ol>
+        <li>Set your robot up on <a href="https://m.i41.eu">m.i41.eu</a> with Focus among its apps
+        (one click over USB in Chrome or Edge).</li>
+        <li>On the robot, swipe up for the app switcher and pick Focus, or switch it from the manager's page.</li>
+        <li>Tap the robot to start. For the statistics, scan its QR code with your phone (swipe up, QR).</li>
+      </ol>
+    </section>
+
+    <section class="card">
+      <h2>Source</h2>
+      <p><a href="https://github.com/i41-eu/q41eu-focus" target="_blank" rel="noopener" data-ext="GitHub">q41eu-focus</a>:
+      one Go server, also for your own server at home. <span class="lic">Apache-2.0</span></p>
+      <p class="note">A proof of concept, vibe coded and tested on a real robot at home, not reviewed by humans yet.</p>
+    </section>
+  </div>
+{{end}}

@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apps for your Stackchan robot · s.i41.eu</title>
+<meta name="description" content="Stackchan robots on i41.eu: set up your robot with the manager, then use the apps you approve for it. By mj41.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%235b6cff'/%3E%3Ctext x='32' y='43' font-family='sans-serif' font-size='28' font-weight='700' text-anchor='middle' fill='white'%3Ei41%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #f4f6ff; --card: #ffffff; --text: #1e2355; --muted: #5a618e; --accent: #4a5bf0;
+    --line: #e1e5fb;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #12142a; --card: #1c1f3d; --text: #e8eaff; --muted: #a3a8cc; --accent: #9aa6ff; --line: #2c3060; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 760px; margin: 0 auto; padding: 48px 16px 32px; }
+  h1 { font-size: 2.2rem; margin: 0 0 4px; letter-spacing: -0.02em; }
+  .top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin: 0 0 6px; }
+  .top .site { font-weight: 700; color: var(--muted); }
+  .top .up { font-size: 0.95rem; color: var(--muted); }
+  .sub { color: var(--muted); margin: 0 0 32px; }
+  .cards { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+    padding: 20px 22px;
+  }
+  .card h2 { margin: 0 0 6px; font-size: 1.25rem; }
+  .card p { margin: 0 0 10px; }
+  .repos { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .repos a { font-weight: 600; }
+  .lic { color: var(--muted); font-size: 0.85rem; white-space: nowrap; }
+  a { color: var(--accent); }
+  a[data-ext]::after {
+    content: attr(data-ext); display: inline-block; margin-left: 0.35em; padding: 0 0.45em;
+    font-size: 0.72em; line-height: 1.5; vertical-align: 0.12em; text-decoration: none;
+    color: var(--muted); border: 1px solid var(--line); border-radius: 999px; font-weight: 400;
+  }
+  .tag {
+    display: inline-block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 1px 9px;
+    margin-left: 8px; vertical-align: middle;
+  }
+  .robots { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin: 0 0 4px; }
+  .robots a { display: block; text-decoration: none; border-radius: 12px; }
+  .robots a:hover, .robots a:focus-visible { background: var(--card); }
+  .robots a:hover figcaption { color: var(--accent); }
+  .robots figure { margin: 0; text-align: center; }
+  .robots img { width: 100%; height: auto; display: block; }
+  .robots figcaption { color: var(--muted); font-size: 0.85rem; }
+  .note { color: var(--muted); font-size: 0.8rem; text-align: center; margin: 0 0 18px; }
+  .need { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 10px 16px; margin: 0 0 16px; }
+  .row { display: grid; grid-template-columns: 220px 1fr; gap: 18px; align-items: start; }
+  .apps { display: grid; gap: 18px; }
+  .app {
+    display: grid; grid-template-columns: 150px 1fr; gap: 18px; align-items: start;
+    scroll-margin-top: 16px;
+  }
+  .app + .app { padding-top: 18px; border-top: 1px solid var(--line); }
+  .app:target { outline: 2px solid var(--accent); outline-offset: 6px; }
+  .app h3 { margin: 0 0 4px; font-size: 1.15rem; }
+  .app p { font-size: 0.95rem; }
+  .app p:last-child { margin-bottom: 0; }
+  .app h3 .tag { font-size: 0.65rem; }
+  code { font: 0.88em ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: var(--bg); border: 1px solid var(--line); border-radius: 5px; padding: 0 4px; }
+  .shot { display: block; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; cursor: zoom-in; }
+  .shot img { display: block; width: 100%; height: auto; }
+  .shot.tall { aspect-ratio: 3 / 4; }
+  .shot.tall img { height: 100%; object-fit: cover; object-position: top; }
+  .more { font-weight: 600; }
+  .more::after { content: " \2192"; }
+  @media (max-width: 640px) {
+    .robots { grid-template-columns: repeat(3, 1fr); }
+    .row { grid-template-columns: 1fr; }
+    .app { grid-template-columns: 96px 1fr; gap: 14px; }
+    .row .shot { max-width: 320px; }
+  }
+  footer { color: var(--muted); font-size: 0.92rem; margin-top: 36px; display: flex; flex-wrap: wrap; gap: 6px 18px; }
+  footer a { color: inherit; }
+  footer .tm { flex-basis: 100%; }
+</style>
+</head>
+<body>
+<main>
+  <div class="top"><span class="site">s.i41.eu</span><a class="up" href="https://i41.eu">i41.eu</a></div>
+  <h1>Apps for your Stackchan robot</h1>
+  <p class="sub">A pet for kids, a focus timer for your desk, and a dashboard of every sensor for
+  the curious: apps for <a href="https://shop.m5stack.com/products/stackchan-kawaii-co-created-open-source-ai-desktop-robot" target="_blank" rel="noopener" data-ext="m5stack.com">M5Stack's Stackchan robot</a>.
+  You pick the apps your robot gets and approve each one. Proofs of concept, vibe coded, not
+  reviewed by humans yet.</p>
+
+  <div class="robots">
+    <a href="#pet"><figure><img src="/s/robot3d-pet.png" width="400" height="400" alt="The robot running the pet: a happy orange face"><figcaption>Pet</figcaption></figure></a>
+    <a href="#focus"><figure><img src="/s/robot3d-focus.png" width="400" height="400" alt="The robot running Focus: a red ring, 17:42 left, its LEDs counting down"><figcaption>Focus</figcaption></figure></a>
+    <a href="#raw"><figure><img src="/s/robot3d-raw.png" width="400" height="400" alt="The robot running Raw data: its own readings on its screen"><figcaption>Raw data</figcaption></figure></a>
+    <a href="#dev"><figure><img src="/s/robot3d-dev.png" width="400" height="400" alt="The robot running Dev: a program's card, Build: All tests pass, its LEDs a full green bar"><figcaption>Dev</figcaption></figure></a>
+    <a href="#apps"><figure><img src="/s/robot3d-qr.png" width="400" height="400" alt="The robot's QR screen: scan it to pair a phone"><figcaption>QR to pair</figcaption></figure></a>
+  </div>
+  <p class="note">The robot rendered in 3D from M5Stack's StackChan structure files (MIT), with real screens from it.
+  <a href="https://s.i41.eu/s3d/">Turn it round and see its sensors on s.i41.eu/s3d</a>.</p>
+
+  <p class="need"><b>What you need:</b> the robot from M5Stack, a computer with Chrome or Edge,
+  a USB-C cable and 2.4 GHz Wi-Fi.</p>
+
+  <div class="cards">
+    <section class="card" id="manager">
+      <h2><a href="https://m.i41.eu">m.i41.eu</a><span class="tag">start here</span></h2>
+      <div class="row">
+        <a class="shot" href="/s/manager-page.webp"><img src="/s/manager-page.webp" width="620" height="460"
+          alt="A robot's card on the manager: connected, on Pet; open the app, switch to Raw data, its apps"></a>
+        <div>
+          <p>The Stackchan manager online: sign in with GitHub or Google, pick the apps for your
+          robot and set it up with one click over USB (Chrome or Edge): the official firmware, your
+          Wi-Fi and a token of its own for every app you approve.</p>
+          <p>Then it keeps a live line to your robots: switch their app, restart them, add or
+          remove apps, see who is paired. One sign-in works for every app.</p>
+          <p>Rather keep it at home? The same manager runs on a computer of your own, with no
+          sign-in and no cloud: <a href="https://github.com/i41-eu/i41eu-manager#readme" target="_blank" rel="noopener" data-ext="GitHub">the home manager</a>.
+          All the ways to set up a robot: <a href="https://github.com/i41-eu/i41eu-StackChan/blob/embody/firmware/main/apps/app_embody_mode/SETUP.md" target="_blank" rel="noopener" data-ext="GitHub">SETUP</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="apps">
+      <h2>Apps</h2>
+      <p>Each app has a host of its own under q41.eu, so no app can read another's data in
+      your browser. On the robot, swipe up for the app switcher; on a phone, scan the robot's QR
+      code to pair.</p>
+      <div class="apps">
+        <div class="app" id="pet">
+          <a class="shot tall" href="/s/pet-page-en.webp"><img src="/s/pet-page-en.webp" width="390" height="844"
+            alt="The pet's page for kids: its face, food, love and sleep bars, and buttons to feed, pet, play and put to bed"></a>
+          <div>
+            <h3><a href="/pet">Pet</a></h3>
+            <p>A Tamagotchi for kids, on the robot and on a phone: feed it, pet it, play with it,
+            put it to bed, or hold an NFC card to it to feed it. It shows how it feels, and never
+            suffers while the kid sleeps or is away.</p>
+            <p><a class="more" href="/pet">Read more</a> · <a href="https://pet.q41.eu">open pet.q41.eu</a></p>
+          </div>
+        </div>
+        <div class="app" id="focus">
+          <a class="shot tall" href="/s/focus-page.webp"><img src="/s/focus-page.webp" width="600" height="1090"
+            alt="Focus on a phone: the ring with 17:38 left, the task, today's count and the week"></a>
+          <div>
+            <h3><a href="/focus">Focus</a></h3>
+            <p>A focus timer for your desk: 25 minutes of focus, then a break. Tap the robot to
+            start or pause; it chimes, nods and dims its LEDs as time runs out. Tasks, a daily goal
+            and the week's count on your phone.</p>
+            <p><a class="more" href="/focus">Read more</a> · <a href="https://focus.q41.eu">open focus.q41.eu</a></p>
+          </div>
+        </div>
+      </div>
+      <p style="margin-top:14px">More apps are coming.</p>
+    </section>
+
+    <section class="card" id="dev-apps">
+      <h2>Apps for developers</h2>
+      <p>For tinkering with the robot, and for giving it to your own programs and AI agents.</p>
+      <div class="apps">
+        <div class="app" id="raw">
+          <a class="shot tall" href="/s/raw-page.webp"><img src="/s/raw-page.webp" width="405" height="540"
+            alt="Raw data: buttons for the robot's face, what it says and its LEDs"></a>
+          <div>
+            <h3><a href="/raw">Raw data</a></h3>
+            <p>Every sensor and command: see through its camera, hear it, talk through it, move its
+            head, set its face and LEDs, read IR remotes and NFC tags. With end to end encryption
+            on, only paired browsers can read the robot: the server relays ciphertext.</p>
+            <p><a class="more" href="/raw">Read more</a> · <a href="https://raw.q41.eu">open raw.q41.eu</a></p>
+          </div>
+        </div>
+        <div class="app" id="dev">
+          <a class="shot tall" href="/s/dev-page.webp"><img src="/s/dev-page.webp" width="600" height="1100"
+            alt="Dev's page: a robot online, Try it with buttons to show text, set the face, move the head, light the LEDs, play a chime and ask a question; keys and events"></a>
+          <div>
+            <h3><a href="/dev">Dev</a><span class="tag">new</span></h3>
+            <p>Your robot for your own programs and AI agents: show text on its screen, ask a
+            question and get the button tapped, light the LEDs as a progress bar, play a chime, hear
+            when someone pats its head. One <code>curl</code> per action, or MCP for Claude Code and
+            other agents, with a key per robot. And a Go kit for writing new apps.</p>
+            <p><a class="more" href="/dev">Read more</a> · <a href="https://dev.q41.eu">open dev.q41.eu</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>How it works</h2>
+      <p>The robot runs <a href="https://github.com/i41-eu/i41eu-StackChan/blob/embody/firmware/main/apps/app_embody_mode/README.md" target="_blank" rel="noopener" data-ext="GitHub">Embody Mode</a>,
+      an app in its firmware that makes it a light client: it connects out to one app at a time
+      over a WebSocket; nothing connects in to
+      it. Each app gets a token for just that robot, from the manager or one you make yourself.
+      The firmware is built reproducibly: anyone can rebuild a release and get the same bytes,
+      and each release is signed.</p>
+      <p><a class="more" href="https://github.com/i41-eu/i41eu-StackChan/blob/embody/firmware/main/apps/app_embody_mode/README.md" target="_blank" rel="noopener" data-ext="GitHub">Read more</a>
+      · <a href="https://github.com/i41-eu/i41eu-arch/blob/main/docs/e2ee.md" target="_blank" rel="noopener" data-ext="GitHub">end to end encryption</a>
+      · <a href="https://github.com/i41-eu/i41eu-arch/blob/main/docs/independent-rebuild.md" target="_blank" rel="noopener" data-ext="GitHub">rebuild a release</a></p>
+    </section>
+
+    <section class="card">
+      <h2>Source</h2>
+      <ul class="repos">
+        <li><a href="https://github.com/i41-eu/i41eu-StackChan/tree/embody" target="_blank" rel="noopener" data-ext="GitHub">StackChan firmware, Embody Mode</a>:
+          the robot side, reproducible and signed releases. <span class="lic">MIT</span></li>
+        <li><a href="https://github.com/i41-eu/i41eu-manager" target="_blank" rel="noopener" data-ext="GitHub">i41eu-manager</a>: the home manager:
+          the manager on a computer at home, no sign-in and no cloud. <span class="lic">MIT</span></li>
+        <li><a href="https://github.com/i41-eu/q41eu-raw" target="_blank" rel="noopener" data-ext="GitHub">q41eu-raw</a>: raw.q41.eu.
+          <span class="lic">MIT</span></li>
+        <li><a href="https://github.com/i41-eu/q41eu-pet" target="_blank" rel="noopener" data-ext="GitHub">q41eu-pet</a>: pet.q41.eu.
+          <span class="lic">MIT</span></li>
+        <li><a href="https://github.com/i41-eu/q41eu-focus" target="_blank" rel="noopener" data-ext="GitHub">q41eu-focus</a>: focus.q41.eu.
+          <span class="lic">Apache-2.0</span></li>
+        <li><a href="https://github.com/i41-eu/q41eu-dev" target="_blank" rel="noopener" data-ext="GitHub">q41eu-dev</a>: dev.q41.eu,
+          the robot for your programs (HTTP) and AI agents (MCP), and a Go kit for apps.
+          <span class="lic">Apache-2.0</span></li>
+        <li><a href="https://github.com/i41-eu/q41eu-sbot" target="_blank" rel="noopener" data-ext="GitHub">q41eu-sbot</a>: a cockpit at
+          home that also drives a micro:bit car. <span class="lic">Apache-2.0</span></li>
+        <li><a href="https://github.com/i41-eu/i41eu-assets" target="_blank" rel="noopener" data-ext="GitHub">i41eu-assets</a>: the 3D robot on
+          these pages, drawn in Go from M5Stack's StackChan structure files with real screens.
+          <span class="lic">Apache-2.0, M5Stack's parts MIT</span></li>
+        <li><a href="https://github.com/i41-eu/i41eu-s3d" target="_blank" rel="noopener" data-ext="GitHub">i41eu-s3d</a>: s.i41.eu/s3d, the robot in 3D
+          in the browser, its sensors and actuators and what each app does with them.
+          <span class="lic">Apache-2.0</span></li>
+      </ul>
+      <p style="margin-top:14px">All of i41 on GitHub: <a href="https://github.com/i41-eu" target="_blank" rel="noopener">github.com/i41-eu</a>.</p>
+    </section>
+  </div>
+
+  <footer>
+    <span class="tm">Stack-chan (スタックチャン) was created by Shinya Ishikawa and the Stack-chan community (<a href="https://github.com/stack-chan/stack-chan" target="_blank" rel="noopener">github.com/stack-chan/stack-chan</a>); this project is independent of it and of M5Stack.</span>
+    <a href="https://i41.eu">i41.eu</a>
+    <a href="https://mj41.cz">mj41.cz</a>
+    <a href="https://github.com/mj41" target="_blank" rel="noopener">github.com/mj41</a>
+    <a href="https://github.com/sponsors/mj41" target="_blank" rel="noopener" data-ext="GitHub">sponsor mj41</a>
+    <a href="https://github.com/i41-eu/i41eu-web" target="_blank" rel="noopener" data-ext="GitHub">this page's source</a>
+  </footer>
+</main>
+</body>
+</html>

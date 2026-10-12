@@ -1,0 +1,89 @@
+{{define "description"}}Pet: a Tamagotchi for kids on a Stackchan robot and on a phone. It lives on pet.q41.eu; the robot is its body.{{end}}
+{{define "main"}}
+  <p class="sub">A Tamagotchi for kids, on the robot and on a phone. The pet lives on the server;
+  the robot is its body.</p>
+  <div class="actions">
+    <a class="btn main" href="https://pet.q41.eu">Open pet.q41.eu</a>
+    <a class="btn" href="https://s.i41.eu/s3d/#pet">See it on the 3D robot</a>
+    <a class="btn" href="https://m.i41.eu">Set up a robot</a>
+  </div>
+
+  <div class="hero">
+    <figure><img src="/s/robot3d-pet.png" width="400" height="400" alt="The robot running the pet: a happy orange face, its LEDs warm"></figure>
+    <figure><a class="shot" href="/s/pet-page-en.webp"><img src="/s/pet-page-en.webp" width="390" height="844"
+      alt="The pet's page for kids: its face, food, love and sleep bars, and buttons to feed, pet, play and put to bed"></a>
+      <figcaption>The kid's page on a phone</figcaption></figure>
+  </div>
+
+  <div class="cards">
+    <section class="card">
+      <h2>Playing</h2>
+      <p>The pet has three needs, food, fun and energy, and its mood follows them. Kids feed it,
+      cuddle it, play with it and put it to bed, on the robot itself or on the kid's page,
+      which works with pictures, so it needs no reading.</p>
+      <ul>
+        <li><b>Stroke or press its head:</b> a tickle, a cuddle or a scratch, each with its own line.</li>
+        <li><b>Hold a food card to it:</b> any NFC card or sticker a parent gave a food; it eats it, and is picky about the same food twice.</li>
+        <li><b>Tap its screen:</b> a menu with food, play, a nap and its needs.</li>
+        <li><b>Catch the ball:</b> five balls on the screen to tap, while the head makes each one harder, up to dodging a hand that comes close.</li>
+        <li><b>The color game:</b> the LED strips show colors, the kid presses them in order; the three best games make a podium with photos from the robot's camera.</li>
+      </ul>
+      <p>The pet is kind: it never dies or gets ill. Neglected, it only gets sad and asks for food
+      or play now and then. Its needs pause at night and during school hours, so it never suffers
+      while the kid sleeps or is away.</p>
+    </section>
+
+    <section class="card">
+      <h2>For parents</h2>
+      <p>The parent page belongs to the robot's owner: signed in on pet.q41.eu (the same sign-in
+      as m.i41.eu), or behind a PIN for a pet at home. Kids pair with the robot's QR code and need
+      no account.</p>
+      <ul>
+        <li>The daily routine: wake-up and bedtime for weekdays and weekends, school hours when the pet rests.
+        Before bed it yawns, sings a lullaby and fades a warm night light; in the morning it greets the kid.</li>
+        <li>Minutes of play per day (feeding is never limited), sounds, voice and volume, Czech or English.</li>
+        <li>Food cards, the games, the leaderboard's photos (remove a place, or turn photos off).</li>
+        <li>The faces: Fluent Emoji filling the screen, one per mood, or the robot's own face.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Parts it uses</h2>
+      <p>Every part the pet uses and what it does with it. Pick a part to see where it sits on
+      the 3D robot.</p>
+      <ul class="parts">
+        <li><a href="https://s.i41.eu/s3d/?pick=si12t#pet">Head touch</a> Stroked or pressed: tickle, cuddle, long cuddle or scratch, each with its own line and fun; at night the whole palm wakes it.</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=nfc#pet">NFC reader</a> A food card held to it: it eats the card's food (picky about the same food twice); asleep, it dreams of the food.</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=touch-screen#pet">Touch screen</a> A tap opens a menu (food, play, nap, needs); a long press gets a line; in Catch the ball the kid taps the balls.</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=imu#pet">Accelerometer and gyroscope</a> Shaken: "Wheee!", dizzy. The accelerometer and gyro tell when the robot is in someone's hands, and then the head never moves.</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=proximity#pet">Proximity</a> Someone comes close: a hello now and then (at most every 20 minutes); in Catch the ball the head dodges a hand coming close.</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=light#pet">Ambient light</a> In Catch the ball a hand's shadow also counts as coming close; during a game the brightness is fixed so a hand near the light sensor does not dim the screen.</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=display#pet">Display</a> The pet's face per mood (Fluent Emoji filling the screen, or the robot's own face), menus, food, the games and the podium.</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=rgb-leds#pet">RGB LEDs</a> The mood's colour; in the color game the LED strips show the colors to press.</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=speaker#pet">Speaker</a> The pet speaks its lines (a kid's voice, streamed at speaking pace) and plays short sounds.</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=camera#pet">Camera</a> Takes a photo of the kid for the color game's leaderboard (a parent setting, on by default).</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=pitch-servo#pet">Head pitch servo</a> Lifts the sunken head back by day; moves the head in Catch the ball.</li>
+        <li><a href="https://s.i41.eu/s3d/?pick=yaw-servo#pet">Head yaw servo</a> A head turned more than 30° goes back to the middle; the head circles and dodges in Catch the ball.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Start</h2>
+      <ol>
+        <li>Set your robot up on <a href="https://m.i41.eu">m.i41.eu</a> with Pet among its apps
+        (one click over USB in Chrome or Edge).</li>
+        <li>On the robot, swipe up for the app switcher and pick Pet, or switch it from the manager's page.</li>
+        <li>Scan the robot's QR code with the kid's phone or tablet. The parent page is at
+        <a href="https://pet.q41.eu">pet.q41.eu</a>, signed in.</li>
+      </ol>
+    </section>
+
+    <section class="card">
+      <h2>Source</h2>
+      <p><a href="https://github.com/i41-eu/q41eu-pet" target="_blank" rel="noopener" data-ext="GitHub">q41eu-pet</a>:
+      one Go server, also for a pet at home on your own server. <span class="lic">MIT</span></p>
+      <p class="note">A proof of concept, vibe coded and tested on a real robot at home, not reviewed by humans yet.
+      The faces are Fluent Emoji (MIT).</p>
+    </section>
+  </div>
+{{end}}

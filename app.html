@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{.Name}} · s.i41.eu</title>
+<meta name="description" content="{{template "description"}}">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%235b6cff'/%3E%3Ctext x='32' y='43' font-family='sans-serif' font-size='28' font-weight='700' text-anchor='middle' fill='white'%3Ei41%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #f4f6ff; --card: #ffffff; --text: #1e2355; --muted: #5a618e; --accent: #4a5bf0;
+    --line: #e1e5fb; --on-accent: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #12142a; --card: #1c1f3d; --text: #e8eaff; --muted: #a3a8cc; --accent: #9aa6ff; --line: #2c3060; --on-accent: #12142a; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 760px; margin: 0 auto; padding: 32px 16px 32px; }
+  h1 { font-size: 2.2rem; margin: 0 0 4px; letter-spacing: -0.02em; }
+  .top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin: 0 0 18px; }
+  .top a { color: var(--muted); font-size: 0.95rem; }
+  .switch { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 22px; padding: 0; list-style: none; }
+  .switch a {
+    display: block; padding: 4px 14px; border: 1px solid var(--line); border-radius: 999px;
+    background: var(--card); text-decoration: none; font-weight: 600;
+  }
+  .switch a[aria-current] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+  .sub { color: var(--muted); margin: 0 0 18px; font-size: 1.1rem; }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 24px; }
+  .btn {
+    display: inline-block; padding: 8px 16px; border-radius: 10px; border: 1px solid var(--accent);
+    font-weight: 600; text-decoration: none;
+  }
+  .btn.main { background: var(--accent); color: var(--on-accent); }
+  .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; align-items: center; margin: 0 0 24px; }
+  .hero figure { margin: 0; }
+  .hero img { display: block; width: 100%; height: auto; }
+  .shot { display: block; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; cursor: zoom-in; max-height: 420px; }
+  .shot img { object-fit: cover; object-position: top; }
+  .hero figcaption { color: var(--muted); font-size: 0.85rem; text-align: center; margin-top: 4px; }
+  .cards { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+    padding: 20px 22px;
+  }
+  .card h2 { margin: 0 0 8px; font-size: 1.25rem; }
+  .card p { margin: 0 0 10px; }
+  .card ul, .card ol { margin: 0 0 10px; padding-left: 1.3em; }
+  .card li { margin: 0 0 4px; }
+  .parts { list-style: none; padding: 0 !important; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 18px; }
+  .parts li { margin: 0; font-size: 0.95rem; }
+  .parts a { display: block; font-weight: 600; }
+  .note { color: var(--muted); font-size: 0.9rem; }
+  .what { margin: 0; padding-left: 1.2em; }
+  .what li { margin: 0 0 10px; }
+  code { font: 0.88em ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: var(--bg); border: 1px solid var(--line); border-radius: 5px; padding: 0 4px; }
+  pre {
+    margin: 0 0 10px; padding: 12px 14px; overflow-x: auto; background: var(--bg); border: 1px solid var(--line);
+    border-radius: 10px; font: 0.82rem/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre;
+  }
+  pre code { border: 0; padding: 0; background: none; font: inherit; }
+  .tag {
+    display: inline-block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 400;
+    color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 1px 9px;
+    margin-left: 10px; vertical-align: middle;
+  }
+  a { color: var(--accent); }
+  a[data-ext]::after {
+    content: attr(data-ext); display: inline-block; margin-left: 0.35em; padding: 0 0.45em;
+    font-size: 0.72em; line-height: 1.5; vertical-align: 0.12em; text-decoration: none;
+    color: var(--muted); border: 1px solid var(--line); border-radius: 999px; font-weight: 400;
+  }
+  .lic { color: var(--muted); font-size: 0.85rem; white-space: nowrap; }
+  .more { font-weight: 600; }
+  .more::after { content: " \2192"; }
+  @media (max-width: 640px) {
+    .hero, .parts { grid-template-columns: minmax(0, 1fr); }
+    .hero figure { max-width: 360px; margin: 0 auto; }
+  }
+  footer { color: var(--muted); font-size: 0.92rem; margin-top: 36px; display: flex; flex-wrap: wrap; gap: 6px 18px; }
+  footer a { color: inherit; }
+  footer .tm { flex-basis: 100%; }
+</style>
+</head>
+<body>
+<main>
+  <div class="top"><a href="/">&larr; s.i41.eu</a><a href="https://i41.eu">i41.eu</a></div>
+  <ul class="switch" aria-label="Apps">
+    {{- range .Apps}}
+    <li><a href="/{{.ID}}"{{if eq .ID $.ID}} aria-current="page"{{end}}>{{.Name}}</a></li>
+    {{- end}}
+  </ul>
+  <h1>{{.Name}}</h1>
+{{template "main"}}
+  <footer>
+    <span class="tm">Stack-chan (スタックチャン) was created by Shinya Ishikawa and the Stack-chan community (<a href="https://github.com/stack-chan/stack-chan" target="_blank" rel="noopener">github.com/stack-chan/stack-chan</a>); this project is independent of it and of M5Stack.</span>
+    <a href="https://i41.eu">i41.eu</a>
+    <a href="https://mj41.cz">mj41.cz</a>
+    <a href="https://github.com/mj41" target="_blank" rel="noopener">github.com/mj41</a>
+    <a href="https://github.com/sponsors/mj41" target="_blank" rel="noopener" data-ext="GitHub">sponsor mj41</a>
+    <a href="https://github.com/i41-eu/i41eu-web" target="_blank" rel="noopener" data-ext="GitHub">this page's source</a>
+  </footer>
+</main>
+</body>
+</html>
