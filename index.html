@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>i41: a home platform, local first</title>
+<meta name="description" content="i41: an open-source, privacy-first home platform. Your robots, devices and apps, at home; online only as a hub.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%235b6cff'/%3E%3Ctext x='32' y='43' font-family='sans-serif' font-size='28' font-weight='700' text-anchor='middle' fill='white'%3Ei41%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #f4f6ff; --card: #ffffff; --text: #1e2355; --muted: #5a618e; --accent: #4a5bf0;
+    --line: #e1e5fb;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #12142a; --card: #1c1f3d; --text: #e8eaff; --muted: #a3a8cc; --accent: #9aa6ff; --line: #2c3060; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 760px; margin: 0 auto; padding: 48px 16px 32px; }
+  h1 { font-size: 2.2rem; margin: 0 0 4px; letter-spacing: -0.02em; }
+  .sub { color: var(--muted); margin: 0 0 20px; }
+  .intro { margin: 0 0 28px; }
+  .cards { display: grid; gap: 16px; }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+    padding: 20px 22px;
+  }
+  .card h2 { margin: 0 0 6px; font-size: 1.25rem; }
+  .card h2 a { color: var(--text); text-decoration: none; }
+  .card h2 a:hover { color: var(--accent); }
+  .card p { margin: 0 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 0.92rem; }
+  .links a { display: inline-flex; align-items: center; min-height: 24px; }
+  a { color: var(--accent); }
+  .tag {
+    display: inline-block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 1px 9px;
+    margin-left: 8px; vertical-align: middle;
+  }
+  footer { color: var(--muted); font-size: 0.92rem; margin-top: 36px; display: flex; flex-wrap: wrap; gap: 6px 18px; }
+  footer a { color: inherit; }
+  footer .note { flex-basis: 100%; }
+</style>
+</head>
+<body>
+<main>
+  <h1>i41</h1>
+  <p class="sub">An open-source home platform: local first, privacy first.</p>
+  <p class="intro">Your robots, devices and apps work at home, on your own network. The online
+    part is only a hub: it helps you set things up and reach them from away, and it cannot read
+    what it carries. The first device is a Stackchan robot.</p>
+
+  <div class="cards">
+    <section class="card">
+      <h2><a href="https://s.i41.eu">s.i41.eu</a><span class="tag">proof of concept</span></h2>
+      <p>The Stackchan robot with Embody Mode: one robot, the body of many apps. What it does,
+        a page per app, and how to set one up.</p>
+      <div class="links">
+        <a href="https://s.i41.eu">The robot and its apps</a>
+        <a href="https://s.i41.eu/s3d/">The robot in 3D</a>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2><a href="https://m.i41.eu">m.i41.eu</a></h2>
+      <p>The manager: one sign-in for all your devices. Set a robot up over USB in Chrome, choose
+        its apps, switch them from anywhere. A manager of your own can run at home too.</p>
+      <div class="links">
+        <a href="https://m.i41.eu">Open the manager</a>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>The apps, on q41.eu</h2>
+      <p>Each app has an address of its own, so your browser keeps them apart. What each one does:
+        <a href="https://s.i41.eu/#apps">s.i41.eu</a>.</p>
+      <div class="links">
+        <a href="https://raw.q41.eu">Raw data</a>
+        <a href="https://pet.q41.eu">Pet</a>
+        <a href="https://focus.q41.eu">Focus</a>
+        <a href="https://dev.q41.eu">Dev</a>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2><a href="https://github.com/i41-eu" target="_blank" rel="noopener">Open source</a></h2>
+      <p>All of it is on GitHub: the firmware, the manager, the apps, and the platform's vision
+        and architecture.</p>
+      <div class="links">
+        <a href="https://github.com/i41-eu" target="_blank" rel="noopener">github.com/i41-eu</a>
+        <a href="https://github.com/i41-eu/i41eu-arch" target="_blank" rel="noopener">The architecture</a>
+        <a href="https://github.com/i41-eu/i41eu-ideas" target="_blank" rel="noopener">Ideas</a>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <span>By <a href="https://github.com/mj41" target="_blank" rel="noopener">mj41</a></span>
+    <a href="https://github.com/sponsors/mj41" target="_blank" rel="noopener">Sponsor</a>
+    <a href="https://github.com/i41-eu/i41eu-web" target="_blank" rel="noopener">This page's source</a>
+    <span class="note">A proof of concept: written with AI agents and tested at home, not yet
+      reviewed by humans. Stack-chan was created by Shinya Ishikawa and the Stack-chan community
+      (<a href="https://github.com/stack-chan/stack-chan" target="_blank" rel="noopener">github.com/stack-chan/stack-chan</a>);
+      this project is independent of it and of M5Stack.</span>
+  </footer>
+</main>
+</body>
+</html>
