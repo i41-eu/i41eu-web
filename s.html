@@ -80,6 +80,19 @@
     .app { grid-template-columns: 96px 1fr; gap: 14px; }
     .row .shot { max-width: 320px; }
   }
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; counter-reset: step; }
+  .steps > li { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 12px; counter-increment: step; }
+  .steps > li::before {
+    content: counter(step); width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center;
+    background: var(--accent); color: var(--card); font-weight: 700; font-size: 0.9rem;
+  }
+  .steps h3 { margin: 2px 0 4px; font-size: 1.05rem; }
+  .steps p { font-size: 0.95rem; }
+  .steps p:last-child { margin-bottom: 0; }
+  .ways { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 0 0 10px; }
+  .way { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; font-size: 0.9rem; }
+  .way b { display: block; }
+  @media (max-width: 640px) { .ways { grid-template-columns: 1fr; } }
   footer { color: var(--muted); font-size: 0.92rem; margin-top: 36px; display: flex; flex-wrap: wrap; gap: 6px 18px; }
   footer a { color: inherit; }
   footer .tm { flex-basis: 100%; }
@@ -99,7 +112,7 @@
     <a href="#focus"><figure><img src="/s/robot3d-focus.png" width="400" height="400" alt="The robot running Focus: a red ring, 17:42 left, its LEDs counting down"><figcaption>Focus</figcaption></figure></a>
     <a href="#raw"><figure><img src="/s/robot3d-raw.png" width="400" height="400" alt="The robot running Raw data: its own readings on its screen"><figcaption>Raw data</figcaption></figure></a>
     <a href="#dev"><figure><img src="/s/robot3d-dev.png" width="400" height="400" alt="The robot running Dev: a program's card, Build: All tests pass, its LEDs a full green bar"><figcaption>Dev</figcaption></figure></a>
-    <a href="#apps"><figure><img src="/s/robot3d-qr.png" width="400" height="400" alt="The robot's QR screen: scan it to pair a phone"><figcaption>QR to pair</figcaption></figure></a>
+    <a href="#connect"><figure><img src="/s/robot3d-qr.png" width="400" height="400" alt="The robot's QR screen: scan it to pair a phone"><figcaption>QR to pair</figcaption></figure></a>
   </div>
   <p class="note">The robot rendered in 3D from M5Stack's StackChan structure files (MIT), with real screens from it.
   <a href="https://s.i41.eu/s3d/">Turn it round and see its sensors on s.i41.eu/s3d</a>.</p>
@@ -126,11 +139,46 @@
       </div>
     </section>
 
+    <section class="card" id="connect">
+      <h2>How your robot connects</h2>
+      <ol class="steps">
+        <li><div>
+          <h3>USB, once</h3>
+          <p>Plug the robot into a computer with Chrome or Edge. The firmware, your Wi-Fi and the
+          apps you pick go to the robot over the cable; the Wi-Fi password never reaches a server.</p>
+        </div></li>
+        <li><div>
+          <h3>A manager, or none</h3>
+          <p>A manager is the robot's supervisor: from its page you switch the robot's app, add
+          and remove apps and restart it. You choose at setup:</p>
+          <div class="ways">
+            <div class="way"><b>The robot alone</b>no manager; its apps change only over USB.</div>
+            <div class="way"><b>Your home manager</b>on a computer at home: no sign-in, no cloud.</div>
+            <div class="way"><b>m.i41.eu</b>online, from anywhere; it can also show the robots of your home manager.</div>
+          </div>
+          <p>The app switcher on the robot works with any of them: swipe up, QR, then Next and Connect.</p>
+        </div></li>
+        <li><div>
+          <h3>QR to pair a phone</h3>
+          <p>On the robot, swipe up and tap QR. Scan the code, or type its 8 characters, and that
+          browser is paired with the robot for the app it is on. The manager lists the paired
+          browsers, and removes any of them.</p>
+        </div></li>
+        <li><div>
+          <h3>Sign in, then approve your robots</h3>
+          <p>On m.i41.eu you sign in with GitHub or Google: that says who you are. Then you approve
+          which apps each of your robots gets, and each app gets a token for just that robot.
+          Signed in, the apps show your own robots with no pairing.</p>
+        </div></li>
+      </ol>
+      <p style="margin-top:14px"><a class="more" href="https://github.com/i41-eu/i41eu-StackChan/blob/embody/firmware/main/apps/app_embody_mode/SETUP.md" target="_blank" rel="noopener" data-ext="GitHub">All the ways to set up a robot</a></p>
+    </section>
+
     <section class="card" id="apps">
       <h2>Apps</h2>
       <p>Each app has a host of its own under q41.eu, so no app can read another's data in
       your browser. On the robot, swipe up for the app switcher; on a phone, scan the robot's QR
-      code to pair.</p>
+      code to <a href="#connect">pair</a>.</p>
       <div class="apps">
         <div class="app" id="pet">
           <a class="shot tall" href="/s/pet-page-en.webp"><img src="/s/pet-page-en.webp" width="390" height="844"

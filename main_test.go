@@ -196,3 +196,22 @@ func TestAppPages(t *testing.T) {
 		}
 	}
 }
+
+// The robot's QR picture leads to the section on how a robot connects: USB, its manager, the
+// QR code and the sign-in.
+func TestConnectSection(t *testing.T) {
+	s := string(sHTML)
+	if !strings.Contains(s, `<a href="#connect"><figure><img src="/s/robot3d-qr.png"`) {
+		t.Errorf("s.html: the QR picture does not link to #connect")
+	}
+	i := strings.Index(s, `<section class="card" id="connect">`)
+	if i < 0 {
+		t.Fatalf("s.html: no #connect section")
+	}
+	sec := s[i : i+strings.Index(s[i:], "</section>")]
+	for _, want := range []string{"USB", "The robot alone", "Your home manager", "m.i41.eu", "QR", "GitHub or Google"} {
+		if !strings.Contains(sec, want) {
+			t.Errorf("#connect: no %q", want)
+		}
+	}
+}
