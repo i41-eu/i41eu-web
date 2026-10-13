@@ -197,6 +197,30 @@ func TestAppPages(t *testing.T) {
 	}
 }
 
+// s.i41.eu says plainly that nothing is independently reviewed yet, and links the known backlog
+// and how to report a problem privately; the intro points to it.
+func TestSecurityNote(t *testing.T) {
+	s := string(sHTML)
+	i := strings.Index(s, `<section class="card" id="security">`)
+	if i < 0 {
+		t.Fatalf("s.html: no #security section")
+	}
+	sec := s[i : i+strings.Index(s[i:], "</section>")]
+	for _, want := range []string{
+		"known backlog", "nothing has been independently",
+		`href="https://github.com/i41-eu/i41eu-arch/blob/main/docs/security.md"`,
+		`href="https://github.com/i41-eu/.github/blob/main/SECURITY.md"`,
+	} {
+		if !strings.Contains(sec, want) {
+			t.Errorf("#security: no %q", want)
+		}
+	}
+	j := strings.Index(s, `<p class="sub">`)
+	if j < 0 || !strings.Contains(s[j:j+strings.Index(s[j:], "</p>")], `href="#security"`) {
+		t.Error("s.html: the intro does not point to #security")
+	}
+}
+
 // The robot's QR picture leads to the section on how a robot connects: USB, its manager, the
 // QR code and the sign-in.
 func TestConnectSection(t *testing.T) {

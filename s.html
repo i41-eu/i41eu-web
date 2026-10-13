@@ -105,7 +105,7 @@
   <p class="sub">A pet for kids, a focus timer for your desk, and a dashboard of every sensor for
   the curious: apps for <a href="https://shop.m5stack.com/products/stackchan-kawaii-co-created-open-source-ai-desktop-robot" target="_blank" rel="noopener" data-ext="m5stack.com">M5Stack's Stackchan robot</a>.
   You pick the apps your robot gets and approve each one. Proofs of concept, vibe coded, not
-  reviewed by humans yet.</p>
+  reviewed by humans yet (<a href="#security">security</a>).</p>
 
   <div class="robots">
     <a href="#pet"><figure><img src="/s/robot3d-pet.png" width="400" height="400" alt="The robot running the pet: a happy orange face"><figcaption>Pet</figcaption></figure></a>
@@ -145,7 +145,8 @@
         <li><div>
           <h3>USB, once</h3>
           <p>Plug the robot into a computer with Chrome or Edge. The firmware, your Wi-Fi and the
-          apps you pick go to the robot over the cable; the Wi-Fi password never reaches a server.</p>
+          apps you pick go to the robot over the cable; the setup page sends the Wi-Fi password only to the robot, never to a server (you trust the
+          page the manager sends: <a href="#security">security</a>).</p>
         </div></li>
         <li><div>
           <h3>A manager, or none</h3>
@@ -247,6 +248,19 @@
       <p><a class="more" href="https://github.com/i41-eu/i41eu-StackChan/blob/embody/firmware/main/apps/app_embody_mode/README.md" target="_blank" rel="noopener" data-ext="GitHub">Read more</a>
       · <a href="https://github.com/i41-eu/i41eu-arch/blob/main/docs/e2ee.md" target="_blank" rel="noopener" data-ext="GitHub">end to end encryption</a>
       · <a href="https://github.com/i41-eu/i41eu-StackChan/blob/embody/firmware/main/apps/app_embody_mode/README.md#verify-a-release" target="_blank" rel="noopener" data-ext="GitHub">verify a release</a></p>
+    </section>
+
+    <section class="card" id="security">
+      <h2>Security</h2>
+      <p>We aim for i41 to be secure, but there is a known backlog,
+      and nothing has been independently reviewed or verified yet. The aim: each app gets only
+      the robots you approve it for, what the robot sees and hears can go end to end encrypted,
+      and anyone can check a release.</p>
+      <p>What to do now: the robot keeps your Wi-Fi password and its app tokens unencrypted in its
+      memory, and so does the firmware backup the setup saves on your computer. Keep both private,
+      and if a robot is lost, change your Wi-Fi password.</p>
+      <p><a class="more" href="https://github.com/i41-eu/i41eu-arch/blob/main/docs/security.md" target="_blank" rel="noopener" data-ext="GitHub">The known backlog</a>
+      · <a href="https://github.com/i41-eu/.github/blob/main/SECURITY.md" target="_blank" rel="noopener" data-ext="GitHub">report a problem privately</a></p>
     </section>
 
     <section class="card">
