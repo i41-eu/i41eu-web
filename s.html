@@ -242,18 +242,18 @@
       an app in its firmware that makes it a light client: it connects out to one app at a time
       over a WebSocket; nothing connects in to
       it. Each app gets a token for just that robot, from the manager or one you make yourself.
-      The firmware is built reproducibly: anyone can rebuild a release and get the same bytes,
-      and each release is signed.</p>
+      The firmware is built reproducibly: anyone can rebuild a release and get the same bytes.
+      The owner rebuilds each release too and signs its hashes, and you can check both.</p>
       <p><a class="more" href="https://github.com/i41-eu/i41eu-StackChan/blob/embody/firmware/main/apps/app_embody_mode/README.md" target="_blank" rel="noopener" data-ext="GitHub">Read more</a>
       · <a href="https://github.com/i41-eu/i41eu-arch/blob/main/docs/e2ee.md" target="_blank" rel="noopener" data-ext="GitHub">end to end encryption</a>
-      · <a href="https://github.com/i41-eu/i41eu-arch/blob/main/docs/independent-rebuild.md" target="_blank" rel="noopener" data-ext="GitHub">rebuild a release</a></p>
+      · <a href="https://github.com/i41-eu/i41eu-StackChan/blob/embody/firmware/main/apps/app_embody_mode/README.md#verify-a-release" target="_blank" rel="noopener" data-ext="GitHub">verify a release</a></p>
     </section>
 
     <section class="card">
       <h2>Source</h2>
       <ul class="repos">
         <li><a href="https://github.com/i41-eu/i41eu-StackChan/tree/embody" target="_blank" rel="noopener" data-ext="GitHub">StackChan firmware, Embody Mode</a>:
-          the robot side, reproducible and signed releases. <span class="lic">MIT</span></li>
+          the robot side, reproducible releases with signed hashes. <span class="lic">MIT</span></li>
         <li><a href="https://github.com/i41-eu/i41eu-manager" target="_blank" rel="noopener" data-ext="GitHub">i41eu-manager</a>: the home manager:
           the manager on a computer at home, no sign-in and no cloud. <span class="lic">MIT</span></li>
         <li><a href="https://github.com/i41-eu/q41eu-raw" target="_blank" rel="noopener" data-ext="GitHub">q41eu-raw</a>: raw.q41.eu.
