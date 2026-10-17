@@ -239,3 +239,22 @@ func TestConnectSection(t *testing.T) {
 		}
 	}
 }
+
+func TestMiniRobots(t *testing.T) {
+	minis := regexp.MustCompile(`"/s/(mini-[^"]+\.png)"`).FindAllSubmatch(sHTML, -1)
+	if len(minis) != 5 {
+		t.Fatalf("s.html names %d mini robots, want 5", len(minis))
+	}
+	seen := map[string]bool{}
+	for _, m := range minis {
+		p := "/s/" + string(m[1])
+		if seen[p] {
+			t.Errorf("%s named twice: the five mini robots need different screens", p)
+		}
+		seen[p] = true
+		code, _, h := get(t, "s.i41.eu", p)
+		if code != 200 || h.Get("Content-Type") != "image/png" {
+			t.Errorf("%s: %d %s, want 200 image/png", p, code, h.Get("Content-Type"))
+		}
+	}
+}
